@@ -1,6 +1,6 @@
 import React from 'react'
-
-const ResultModel = ({ ref, result, targetTime }) => {
+import { forwardRef } from 'react'
+const ResultModel = forwardRef(({ result, targetTime }, ref) => {
     return (
         <dialog ref={ref} className='result-model' open>
             <h2>Your {result}:</h2>
@@ -11,6 +11,6 @@ const ResultModel = ({ ref, result, targetTime }) => {
             </form>
         </dialog>
     )
-}
+})
 
 export default ResultModel
