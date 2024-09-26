@@ -3,12 +3,11 @@ import ResultModel from './ResultModel'
 
 
 
-
 const TimerChallenge = ({ ref, title, targetTime }) => {
     const [timerExpired, setTimerExpired] = useState(false)
     const [timerStarted, setTimerStarted] = useState(false)
     const timer = useRef()
-    const dialog = useRef()
+    // const dialog = useRef()
     function handleStart() {
         timer.current = setTimeout(() => {
             setTimerExpired(true)
