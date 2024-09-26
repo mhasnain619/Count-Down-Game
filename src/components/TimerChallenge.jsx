@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import ResultModel from './ResultModel'
+import ResultModel from './ResultModel.jsx'
 
 
 
@@ -7,10 +7,11 @@ const TimerChallenge = ({ ref, title, targetTime }) => {
     const [timerExpired, setTimerExpired] = useState(false)
     const [timerStarted, setTimerStarted] = useState(false)
     const timer = useRef()
-    // const dialog = useRef()
+    const dialog = useRef()
     function handleStart() {
         timer.current = setTimeout(() => {
             setTimerExpired(true)
+            dialog.current.showModal()
         }, targetTime * 1000)
         setTimerStarted(true)
     }
@@ -21,10 +22,10 @@ const TimerChallenge = ({ ref, title, targetTime }) => {
 
     return (
         <>
+            <ResultModel ref={dialog} targetTime={targetTime} result='lost' />
             <section className='challenge'>
                 <h2>{title}</h2>
                 <p className='challenge-time'>
-                    {timerExpired && <p>you lost</p>}
                     {targetTime} second{targetTime > 1 ? 's' : ''}
                 </p>
                 <p>
